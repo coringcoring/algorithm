@@ -6,3 +6,5 @@
 * [1주차 자바 코드파일들](./codes/src/sorting/)
 
 ## week 2: 스택,큐,덱
+* [2주차 공부 내용 정리](./docs/week2.md)
+
