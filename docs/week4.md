@@ -6,18 +6,15 @@
 * 단점: 경우의 수가 매우 많은 경우 시간과 메모리의 부담이 커질 수 있음 -> 문제의 특성에 따라 다른 탐색 기법을 사용하는 것이 좋다
 
 ### 완전탐색 종류 
-1. 브루트포스
-2. 비트마스크
-3. 백트래킹
-4. 순열
-5. 재귀함수
-6. DFS/BFS 
+1. 브루트포스(Brute Force) 
+2. 비트마스크(Bitmask)
+3. 백트래킹(Backtracking)
+4. 순열(Permutation): 임의의 수열이 있을 때 그것을 다른 순서로 연산하는 방법 
+5. 재귀함수(Recursion) 
+6. DFS(Depth First Search)/BFS(Breadth First Search)  
 
 
-## 백트래킹
-
-
-
+## 백트래킹 (Backtracking) 
 
 
 
@@ -25,4 +22,4 @@
 
 ### References
 * https://adjh54.tistory.com/196
-* 
+* https://hongjw1938.tistory.com/78
