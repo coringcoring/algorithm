@@ -8,18 +8,25 @@
 ### 완전탐색 종류 
 1. 브루트포스(Brute Force) 
 2. 비트마스크(Bitmask)
-3. 백트래킹(Backtracking)
-4. 순열(Permutation): 임의의 수열이 있을 때 그것을 다른 순서로 연산하는 방법 
-5. 재귀함수(Recursion) 
-6. DFS(Depth First Search)/BFS(Breadth First Search)  
+    * AND 연산(&) : 둘 다 1이면 1
+    * OR 연산(|) : 둘 중 1개만 1이면 1
+    * NOT 연산(~) : 1이면 0, 0이면 1
+    * XOR 연산(^) : 둘의 관계가 다르면 1, 같으면 0
+    * Shift 연산(<<, >>) : A << B라고 한다면 A를 좌측으로 B 비트만큼 미는 것
+4. 백트래킹(Backtracking)
+5. 순열(Permutation): 임의의 수열이 있을 때 그것을 다른 순서로 연산하는 방법 
+6. 재귀함수(Recursion) 
+7. DFS(Depth First Search)/BFS(Breadth First Search)  
 
 
 ## 백트래킹 (Backtracking) 
-
-
+해를 찾는 도중 해가 아니어서 막히면, 되돌아가서 다시 해를 찾아가는 기법. 최적화 문제와 결정 문제를 푸는 방법<br>
+코딩에서는 반복문의 횟수를 줄일 수 있어 효율적임 -> `가지치기`: 불필요한 부분을 쳐내고 최대한 올바른 쪽으로 간다는 의미
+* 주로 문제 풀이에서는 DFS 등으로 모든 경우의 수를 탐색하는 과정에서, 조건문 등을 걸어 답이 절대로 될 수 없는 상황을 정의하고, 그러한 상황일 경우에는 탐색을 중지시킨 뒤 그 이전으로 돌아가서 다시 다른 경우를 탐색하게끔 구현
 
 
 
 ### References
 * https://adjh54.tistory.com/196
 * https://hongjw1938.tistory.com/78
+* https://chanhuiseok.github.io/posts/algo-23/
