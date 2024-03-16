@@ -13,3 +13,6 @@
 
 ## week 4: 완전탐색,백트래킹
 * [4주차 공부 내용 정리](./docs/week4.md)
+
+## week 5: DFS,BFS
+* [5주차 공부 내용 정리](./docs/week5.md)
