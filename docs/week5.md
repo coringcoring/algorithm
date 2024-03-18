@@ -22,9 +22,23 @@
   * 즉, 그래프 내에 적은 숫자의 간선만을 가지는 희소 그래프(Sparse Graph) 의 경우 인접 행렬보다 인접 리스트를 사용하는 것이 유리하다.
 
 
+## BFS(Breadth-First Search) 
+너비 우선 탐색. 루트 노드(혹은 다른 임의의 노드)에서 시작해서 인접한 노드를 먼저 탐색하는 방법
+![image](https://github.com/java-coding-test/kjy/assets/65723420/b4776936-38b3-47c4-827a-6e3f58127073)
 
+* 사용하는 경우: 두 노드 사이의 최단 경로 혹은 임의의 경로를 찾고 싶을 때
+* 특징
+  * 직관적 x
+  * 재귀적으로 작동 x
+  * 그래프 탐색의 경우 어떤 노드를 방문했었는지 여부를 반드시 검사 해야 함 -> 안하면 무한루프에 빠질 위험 있음
+  * 방문한 노드들을 차례로 저장한 후 꺼낼 수 있는 자료 구조인 큐(Queue)를 사용 -> **선입선출(FIFO)** 원칙
+ 
+* 시간 복잡도
+  * 인접 리스트로 표현된 그래프: O(N+E)
+  * 인접 행렬로 표현된 그래프: O(N^2)
+  * 깊이 우선 탐색(DFS)과 마찬가지로 그래프 내에 적은 숫자의 간선만을 가지는 희소 그래프(Sparse Graph) 의 경우 인접 행렬보다 인접 리스트를 사용하는 것이 유리하다.
 
-## BFS(Breadth First Search) 
 
 ### Refernces 
 * https://gmlwjd9405.github.io/2018/08/14/algorithm-dfs.html
+* https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html
