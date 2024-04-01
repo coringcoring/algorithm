@@ -23,3 +23,6 @@
 ## week 6: Greedy Algorithm
 * [6주차 공부 내용 정리](./docs/week6.md)
 * [6주차 자바 코드파일들](./codes/src/greedy)
+
+## week 7: DP
+* [7주차 공부 내용 정리](./docs/week7.md)
