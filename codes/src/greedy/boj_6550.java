@@ -30,7 +30,5 @@ public class boj_6550 {
         }
         System.out.println(sb);
 
-
-
     }
 }

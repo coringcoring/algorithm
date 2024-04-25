@@ -9,6 +9,7 @@ public class boj_11057 { //https://minhamina.tistory.com/147 참고..
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         int n=Integer.parseInt(br.readLine());
         int[][] dp=new int[n+1][10];
+
         for(int i=0;i<10;i++){
             dp[0][i]=1;
         }
