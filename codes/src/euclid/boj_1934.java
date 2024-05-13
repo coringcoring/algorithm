@@ -12,7 +12,6 @@ public class boj_1934 {
         int N = Integer.parseInt(br.readLine());
 
         StringBuilder sb = new StringBuilder();
-
         StringTokenizer st;
 
         for(int i = 0; i < N; i++) {
