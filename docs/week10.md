@@ -22,6 +22,31 @@
   * 조건1: 분할된 부분 집합을 합치면 원래의 전체집합이 됨
   * 조건2: 분할된 부분 집합끼리는 겹치는 원소가 없음 
 
+## MST(Minimum Spanning Tree) 
+* Spanning Tree(=신장트리)? : 그래프 내의 모든 정점을 포함하는 트리
+  ![image](https://github.com/java-coding-test/kjy/assets/65723420/a85de42e-8c61-43a6-96f9-6b07b49e7c01)
+  * 그래프의 최소 연결(간선 수가 가장 작음) 부분 그래프(일부 간선을 선택) 
+  * n개의 정점을 가지는 그래프의 최소 간선의 수는 (n-1)개 -> (n-1)개의 간선으로 연결되어 있으면 필연적으로 트리 형태 -> Spanning Tree
+  * 사이클을 포함해선 안됨
+  * 모든 정점들이 연결되어 있어야함 
+  * 하나의 그래프에는 많은 신장 트리 존재 가능
+* MST(Minimum Spanning Tree)(=최소 신장 트리): Spanning tree 중 사용된 간선들의 가중치 합이 최소인 트리
+  * 간선의 가중치 합이 최소여야 함
+  * n개의 정점을 가지는 그래프에 대해 반드시 n-1개의 간선만을 사용해야함
+  * 사이클이 포함되어선 안됨 
+### Kruskal MST 알고리즘 
+그리디 방법을 사용해서 그래프의 모든 정점을 최소 비용으로 연결하는 최적 해답을 구하는 것 
+* 과정
+  1. 그래프의 간선들을 가중치의 오름차순으로 정렬
+  2. 정렬된 간선 리스트에서 순서대로 사이클을 형성하지 않는 간선을 선택
+  3. 해당 간선을 현재의 MST 집합에 추가 
+
+### Prim MST 알고리즘 
+
+
+
+
 ### References
 * https://todaycode.tistory.com/108
 * https://gmlwjd9405.github.io/2018/08/31/algorithm-union-find.html
+* https://gmlwjd9405.github.io/2018/08/28/algorithm-mst.html
