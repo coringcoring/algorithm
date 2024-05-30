@@ -73,7 +73,7 @@ public class boj_1197 {
         if(parent[A]==A){
             return A;
         }else{
-            return find(parent[A]);
+            return parent[A]=find(parent[A]);
         }
     }
 
