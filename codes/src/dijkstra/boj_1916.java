@@ -6,21 +6,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-class Node implements Comparable<Node> {
-    int end;
-    int weight;
 
-    Node(int end, int weight) {
-        this.end = end;
-        this.weight = weight;
-    }
-
-    @Override
-    public int compareTo(Node o) {
-        return weight - o.weight;
-    }
-
-}
 public class boj_1916 {
     static int N, M;
     static ArrayList<ArrayList<Node>> a; // 인접리스트.
@@ -87,5 +73,20 @@ public class boj_1916 {
             }
         }
         return dist[end];
+    }
+
+    static class Node implements Comparable<Node> {
+        int end;
+        int weight;
+
+        Node(int end, int weight) {
+            this.end = end;
+            this.weight = weight;
+        }
+
+        @Override
+        public int compareTo(Node o) {
+            return weight - o.weight;
+        }
     }
 }
