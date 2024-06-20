@@ -5,54 +5,71 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class boj_6580 {
+    static boolean[][] photoPixels;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s1 = br.readLine();
-        int n = Integer.parseInt(s1.split(" ")[2]);
-        br.readLine(); // n*n이므로 따로 저장x
-        br.readLine();
+        StringBuilder sb = new StringBuilder();
 
-        int[][] arr = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            String s = br.readLine().trim();
-            String[] hex = s.split(",");
-            for (int j = 0; j < hex.length; j++) {
-                int val = Integer.decode(hex[j]); // 2진수로 변환
-                for (int k = 0; k < 8; k++) {
-                    // 1<<(7-k) : 1을 왼쪽으로 (7-k)비트만큼 이동시킴
-                    // val&(1<<(7-k)): val의 (7-k)가 1인지 확인
-                    arr[i][j * 8 + k] = (val & (1 << (7 - k))) != 0 ? 1 : 0;
-                }
+        // Read the size of the quadtree
+        String[] pixelInfo = br.readLine().split(" ");
+        for (int i = 0; i < 2; i++) br.readLine(); // Skip the next two lines
+        int pixelSize = Integer.parseInt(pixelInfo[2]);
+        int convertedPixel = pixelSize / 8;
+        photoPixels = new boolean[pixelSize][pixelSize];
+
+        // Read the pixel data and convert it to boolean array
+        for (int i = 0; i < pixelSize; i++) {
+            pixelInfo = br.readLine().split(",");
+            for (int j = 0; j < convertedPixel; j++) {
+                makePixels(convertHexToBinary(pixelInfo[j]), i, j * 8);
             }
         }
 
-        br.readLine(); // } 읽기
-        System.out.println(n); // n 출력
+        // Encode the pixel data to quadtree format
+        sb.append(pixelSize).append("\n")
+                .append(encodeToQuadtree(pixelSize, 0, 0)).append("\n");
 
-        System.out.println(Quadtree(arr, 0, 0, n));
+        System.out.print(sb);
+        br.close();
     }
 
-    private static String Quadtree(int[][] arr, int x, int y, int size) {
-        if (isSameColor(arr, x, y, size)) {
-            return arr[x][y] == 1 ? "B" : "W";
+    // Convert hex string to binary string
+    static String convertHexToBinary(String hexString) {
+        int hexNum = Integer.parseInt(hexString.substring(2), 16); // Skip "0x" prefix
+        String binary = Integer.toBinaryString(hexNum);
+        StringBuilder sb = new StringBuilder("0".repeat(8 - binary.length())).append(binary);
+        return sb.toString();
+    }
+
+    // Populate the photoPixels array based on the binary string
+    static void makePixels(String binaryString, int row, int col) {
+        for (char b : binaryString.toCharArray()) {
+            photoPixels[row][col++] = b == '1';
         }
-        int halfSize = size / 2;
-        return "Q" +
-                Quadtree(arr, x, y, halfSize) + // 좌상
-                Quadtree(arr, x, y + halfSize, halfSize) + // 우상
-                Quadtree(arr, x + halfSize, y, halfSize) + // 좌하
-                Quadtree(arr, x + halfSize, y + halfSize, halfSize); // 우하
-
     }
 
-    // 현재 영역이 모두 같은 색인지 확인하는 함수
-    private static boolean isSameColor(int[][] arr, int x, int y, int size) {
-        int first = arr[x][y];
+    // Encode the photoPixels array to quadtree format
+    static String encodeToQuadtree(int size, int row, int col) {
+        if (isUniform(size, row, col)) return photoPixels[row][col] ? "B" : "W";
+
+        StringBuilder sb = new StringBuilder();
+        int half = size / 2;
+        sb.append("Q")
+                .append(encodeToQuadtree(half, row, col))
+                .append(encodeToQuadtree(half, row, col + half))
+                .append(encodeToQuadtree(half, row + half, col))
+                .append(encodeToQuadtree(half, row + half, col + half));
+
+        return sb.toString();
+    }
+
+    // Check if all pixels in the given area are the same
+    static boolean isUniform(int size, int row, int col) {
+        boolean standardPixel = photoPixels[row][col];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (arr[x + i][y + j] != first) {
-                    return false;
-                }
+                if (photoPixels[row + i][col + j] != standardPixel) return false;
             }
         }
         return true;
