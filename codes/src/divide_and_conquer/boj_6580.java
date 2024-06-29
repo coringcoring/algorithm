@@ -11,14 +11,13 @@ public class boj_6580 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
-        // Read the size of the quadtree
         String[] pixelInfo = br.readLine().split(" ");
         for (int i = 0; i < 2; i++) br.readLine(); // Skip the next two lines
         int pixelSize = Integer.parseInt(pixelInfo[2]);
         int convertedPixel = pixelSize / 8;
         photoPixels = new boolean[pixelSize][pixelSize];
 
-        // Read the pixel data and convert it to boolean array
+        // 픽셀 데이터를 boolean으로
         for (int i = 0; i < pixelSize; i++) {
             pixelInfo = br.readLine().split(",");
             for (int j = 0; j < convertedPixel; j++) {
@@ -26,7 +25,7 @@ public class boj_6580 {
             }
         }
 
-        // Encode the pixel data to quadtree format
+        // 해독
         sb.append(pixelSize).append("\n")
                 .append(encodeToQuadtree(pixelSize, 0, 0)).append("\n");
 
@@ -34,22 +33,22 @@ public class boj_6580 {
         br.close();
     }
 
-    // Convert hex string to binary string
+    // 16진법을 2진법으로 변환
     static String convertHexToBinary(String hexString) {
         int hexNum = Integer.parseInt(hexString.substring(2), 16); // Skip "0x" prefix
         String binary = Integer.toBinaryString(hexNum);
         StringBuilder sb = new StringBuilder("0".repeat(8 - binary.length())).append(binary);
-        return sb.toString();
+        return sb.reverse().toString();
     }
 
-    // Populate the photoPixels array based on the binary string
+    // 픽셀을 binary형식으로 변환
     static void makePixels(String binaryString, int row, int col) {
         for (char b : binaryString.toCharArray()) {
             photoPixels[row][col++] = b == '1';
         }
     }
 
-    // Encode the photoPixels array to quadtree format
+    // pixel을 quadtree로 변환
     static String encodeToQuadtree(int size, int row, int col) {
         if (isUniform(size, row, col)) return photoPixels[row][col] ? "B" : "W";
 
@@ -64,13 +63,15 @@ public class boj_6580 {
         return sb.toString();
     }
 
-    // Check if all pixels in the given area are the same
+    // 구역에서 픽셀이 같은 색인지
     static boolean isUniform(int size, int row, int col) {
         boolean standardPixel = photoPixels[row][col];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (photoPixels[row + i][col + j] != standardPixel) return false;
+                if (photoPixels[row][col++] != standardPixel) return false;
             }
+            row++;
+            col-=size;
         }
         return true;
     }
