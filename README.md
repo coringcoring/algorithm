@@ -26,3 +26,13 @@
 
 ## week 7: DP
 * [7주차 공부 내용 정리](./docs/week7.md)
+
+## week 8: 최단 경로, 우선순위 큐, 힙 정렬
+* [8주차 공부 내용 정리](./docs/week8.md)
+
+## week 10: Union-Find, MST
+* [10주차 공부 내용 정리](./docs/week10.md)
+
+## Segment Tree
+* [Segment Tree 공부 내용 정리](./docs/segment_tree.md)
+* [Segment Tree 자바 코드 파일들](./codes/src/segment_tree)
