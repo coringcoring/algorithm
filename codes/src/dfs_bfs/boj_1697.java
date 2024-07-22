@@ -22,7 +22,7 @@ public class boj_1697 {
         }else{
             bfs(N);
         }
-        ;
+
     }
     private static void bfs(int start){
         Queue<Integer> q=new LinkedList<>();
