@@ -1,4 +1,4 @@
-package dijkstra;
+package dfs_bfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,9 +8,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class boj_13549 {
+public class boj_13913 {
     static int N,K;
-    static int min=Integer.MAX_VALUE;
     static boolean[] visit=new boolean[100001];
     static int[] count=new int[100001];
     public static void main(String[] args) throws IOException {
@@ -18,13 +17,16 @@ public class boj_13549 {
         StringTokenizer st=new StringTokenizer(br.readLine());
         N=Integer.parseInt(st.nextToken());
         K=Integer.parseInt(st.nextToken());
+
         Arrays.fill(count,100001);
 
         if(N==K){
             System.out.println(0);
+            System.out.println(N);
         }else{
             bfs(N);
-            System.out.println(min);
+            StringBuilder sb=new StringBuilder();
+
         }
     }
 
@@ -36,13 +38,8 @@ public class boj_13549 {
         while(!q.isEmpty()){
             int cur=q.poll();
             visit[cur]=true;
-
-            if(cur==K){
-                min=Math.min(min,count[cur]);
-            }
-
+            int nxt;
             for(int i=0;i<3;i++){
-                int nxt;
                 if(i==0){
                     nxt=cur*2;
                 }else if(i==1){
@@ -51,14 +48,15 @@ public class boj_13549 {
                     nxt=cur-1;
                 }
 
+                if(cur==K){
+                    System.out.println(count[cur]);
+                    return;
+                }
                 if(nxt>=0 && nxt<visit.length && !visit[nxt]){
                     q.add(nxt);
-                    if(nxt!=cur*2){
-                        count[nxt]=Math.min(count[cur]+1,count[nxt]);
-                    }else{
-                        count[nxt]=Math.min(count[cur],count[nxt]);
-                    }
+                    count[nxt]=Math.min(count[cur]+1,count[nxt]);
                 }
+
 
             }
         }
