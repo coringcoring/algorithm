@@ -33,8 +33,11 @@ public class boj_14499 {
         StringTokenizer st=new StringTokenizer(br.readLine());
         N=Integer.parseInt(st.nextToken());
         M=Integer.parseInt(st.nextToken());
-        x=Integer.parseInt(st.nextToken());
+
+        //y x를 반대로 준다..
         y=Integer.parseInt(st.nextToken());
+        x=Integer.parseInt(st.nextToken());
+
         int K=Integer.parseInt(st.nextToken());
 
         map=new int[N][M];
